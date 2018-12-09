@@ -24,6 +24,10 @@ yarn add react-router-guard
 ## Notes
 - You must install react-router-dom before using it, because it use peerDependencies to reduce package-size
 
+
+## Examples
+- [Live demo](https://codesandbox.io/s/5wr9ow6xlk)
+
 ## Usage
 You can check folder example in github or code bellow:
 ```jsx

@@ -20,6 +20,10 @@ yarn add react-router-guard
 - Support promise checking guard permission to access route (You can set url redirect when condition does not match)
 - Support dynamic redirect with params ex: '/patchToRedirRect/:pageId';
 
+
+## Notes
+- You must install react-router-dom before using it, because it use peerDependencies to reduce package-size
+
 ## Usage
 You can check folder example in github or code bellow:
 ```jsx
@@ -46,7 +50,7 @@ The config object you can check this example
 
 ```jsx
 import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth } from './guards';
+import { checkAuth, checkPayment } from './guards';
 
 export default [
   {
@@ -67,9 +71,14 @@ export default [
       },
       {
         path: '/test/admin',
-        canActivate: [checkAuth],
+        canActivate: checkAuth,
         component: dynamicWrapper(() => import('./pages/Test/Admin')),
       },
+      {
+        path: '/test/abc',
+        canActivate: [checkAuth, checkPayment],
+        component: dynamicWrapper(() => import('./pages/Test/Abc')),
+      },      
     ],
   },
 ];

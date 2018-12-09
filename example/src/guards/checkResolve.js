@@ -1,7 +1,7 @@
-export default function checkAuth() {
+export default function checkResolve() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(new Error('/deny'));
+      resolve({ name: 'TSL' });
     }, 1000);
   });
 }

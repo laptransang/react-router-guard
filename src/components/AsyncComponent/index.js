@@ -7,7 +7,7 @@ class AsyncComponent extends React.Component {
   static propTypes = {
     promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
     children: PropTypes.node.isRequired,
-    history: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   constructor(props) {

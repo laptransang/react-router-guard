@@ -1,13 +1,13 @@
 import React from "react";
 
-class Hello extends React.Component {
+class Reject extends React.Component {
   render() {
     return (
       <div className="Page">
-        <h3>Hello Page</h3>
+        <h3>Reject Page</h3>
       </div>
     );
   }
 }
 
-export default Hello;
+export default Reject;

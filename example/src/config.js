@@ -1,27 +1,32 @@
 import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth } from './guards';
+import { checkAuth, checkResolve } from './guards';
 
 export default [
   {
-    path: '/test',
+    path: '/',
     component: dynamicWrapper(() => import('./layouts/MainLayout')),
     routes: [
       {
-        path: '/test/hello',
+        path: '/hello',
         component: dynamicWrapper(() => import('./pages/Test/Hello')),
       },
       {
-        path: '/test/redirect/:testId',
-        redirect: '/test/deny/:testId',
+        path: '/redirect/:testId',
+        redirect: '/deny/:testId',
       },
       {
-        path: '/test/deny',
+        path: '/deny',
         component: dynamicWrapper(() => import('./pages/Test/Deny')),
       },
       {
-        path: '/test/admin',
+        path: '/reject',
         canActivate: [checkAuth],
-        component: dynamicWrapper(() => import('./pages/Test/Admin')),
+        component: dynamicWrapper(() => import('./pages/Test/Reject')),
+      },
+      {
+        path: '/resolve',
+        canActivate: [checkResolve],
+        component: dynamicWrapper(() => import('./pages/Test/Resolve')),
       },
     ],
   },

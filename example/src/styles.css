@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h3 {
+  padding: 15px;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.Navigation {
+  background: cornflowerblue;
+}
+
+.Navigation ul li { display: inline-block }
+.Navigation ul li a { padding: 8px; display: block; text-decoration: none; color: #fff; border: 1px solid black }
+
+.MainLayout {
+  border: 1px solid #dedede;
+  min-height: 100vh;
+}
+
+.Page {
+  border: 1px solid darkgrey;
+  min-height: 70vh;
+  background: azure;
+}
+
+.Row {
+  display: flex;
+}
+
+.SideBar {
+  background: coral;
+  height: 100%;
+}
+
+.LeftCol {
+  width: 30%;
+}
+
+.RightCol {
+  width: 70%;
+}

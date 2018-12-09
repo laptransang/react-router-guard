@@ -47,3 +47,17 @@ export function makeCancelable(promise) {
     },
   };
 }
+
+export function checkReplaceUrlMatch(redirect, match) {
+  let redirectUrl = redirect;
+
+  // Check route has match params if has then replace redirect url with dynamic params
+  if (match && match.params) {
+    Object.keys(match.params).forEach((key) => {
+      const regex = new RegExp(`:${key}`, 'g');
+      redirectUrl = redirectUrl.replace(regex, match.params[key]);
+    });
+  }
+
+  return redirectUrl;
+}

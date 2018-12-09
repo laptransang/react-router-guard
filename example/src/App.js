@@ -1,13 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import RouterGuard from 'react-router-guard';
+import config from './config';
 
-import ExampleComponent from 'react-router-guard'
-
-export default class App extends Component {
+class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <h1>Hello</h1>
+        <BrowserRouter>
+          <RouterGuard config={config} />
+        </BrowserRouter>
       </div>
-    )
+    );
   }
 }
+
+export default App;

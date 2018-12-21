@@ -18,7 +18,7 @@ yarn add react-router-guard
 * It look like react-router-config but more powerfully.
 * Support lazy route, code splitting.
 * Support layout config for children route.
-* Support loading component when route in lazy mode or wait api in guard, use can custom or hide loading via props;
+* Support loading component when route in lazy mode or wait api in guard, you can custom or hide loading via props;
 * Support promise checking guard permission to access route
     * If success you can pass object data from api via props routeData.
     * If failed you can add redirect to deny page.

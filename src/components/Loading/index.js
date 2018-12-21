@@ -4,6 +4,7 @@ import ImageLoading from '../../assets/img/loading.svg';
 function Loading() {
   return (
     <div
+      className="react-router-guard-loading"
       style={{
         position: 'absolute',
         width: '100%',

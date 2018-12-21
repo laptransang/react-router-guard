@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { promiseSerial, verifyRouterData, makeCancelable } from '../../utils/helpers';
+import { loadingService } from '../../services';
 import Loading from '../Loading';
 
 class AsyncComponent extends React.Component {
   static propTypes = {
     promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
     children: PropTypes.node.isRequired,
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired, // eslint-disable-line
   };
 
   constructor(props) {
@@ -61,7 +62,7 @@ class AsyncComponent extends React.Component {
       return <Fragment>{this.renderChildren()}</Fragment>;
     }
 
-    return <Loading />;
+    return React.createElement(loadingService.get());
   }
 }
 

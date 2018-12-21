@@ -6,8 +6,8 @@ function Navigation() {
     <div className="Navigation">
       <ul>
         <li><Link to="/">Home page</Link></li>
-        <li><Link to="/resolve">Resolve page</Link></li>
-        <li><Link to="/reject">Reject page</Link></li>
+        <li><Link to="/resolve">Check resolve page</Link></li>
+        <li><Link to="/reject">Check reject page</Link></li>
         <li><Link to="/redirect/pageId">Test redirect page</Link></li>
       </ul>
     </div>

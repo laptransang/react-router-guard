@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom'; // eslint-disable-line
 import withRoutes from './withRoutes';
 import { checkReplaceUrlMatch } from '../utils/helpers';
 

@@ -38,6 +38,11 @@ yarn add react-router-guard
 ## Examples
 - [Live demo](https://codesandbox.io/s/5wr9ow6xlk)
 
+
+## Screenshot
+
+<img width="500" src="https://drive.google.com/uc?id=1ztKLqPMLzgrnYK-nSznwkls-1l4VqCYU" />
+
 ## Usage
 You can check detail in folder example in github or short code bellow:
 ```jsx

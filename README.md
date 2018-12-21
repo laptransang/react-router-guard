@@ -16,16 +16,18 @@ yarn add react-router-guard
 
 ## Features
 * It look like react-router-config but more powerfully.
-* Support lazy route, code splitting.
-* Support layout config for children route.
-* Support loading component when route in lazy mode or wait api in guard, you can custom or hide loading via props;
-* Support promise checking guard permission to access route
+* Support lazy loading, code splitting.
+* Support Authentication check canActivate Route Guards.
     * If success you can pass object data from api via props routeData.
-    * If failed you can add redirect to deny page.
+    * If failed you can redirect to url you want.
+* Support template master config for nested children route.
+* Support loading UI component when route in lazy mode or wait api in guard.
+
 * Support dynamic redirect with params:
     *  ```javascript
           {
             path: '/redirect/:testId',
+            exact: true,
             redirect: '/deny/:testId',
           }
         ```
@@ -35,16 +37,65 @@ yarn add react-router-guard
 - You must install react-router-dom before using it, because it use peerDependencies to reduce package-size
 
 
-## Examples
-- [Live demo](https://codesandbox.io/s/5wr9ow6xlk)
-
-
-## Screenshot
+## Demo
+[Demo](https://codesandbox.io/s/5wr9ow6xlk)
 
 <img width="500" src="https://drive.google.com/uc?id=1ztKLqPMLzgrnYK-nSznwkls-1l4VqCYU" />
 
 ## Usage
 You can check detail in folder example in github or short code bellow:
+
+The config object:
+```jsx
+import { dynamicWrapper } from 'react-router-guard';
+import { checkAuth, checkResolve } from './guards';
+
+export default [
+  {
+    path: '/user',
+    component: dynamicWrapper(() => import('./layouts/UserLayout')),
+    routes: [
+      {
+        path: '/user/profile',
+        component: dynamicWrapper(() => import('./pages/User/Profile')),
+        routes: [
+          {
+            path: '/user/profile/a',
+            component: dynamicWrapper(() => import('./pages/User/Detail')),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/',
+    component: dynamicWrapper(() => import('./layouts/MainLayout')),
+    routes: [
+      {
+        path: '/',
+        exact: true,
+        component: dynamicWrapper(() => import('./pages/Home')),
+      },
+      {
+        path: '/redirect/:testId',
+        redirect: '/deny/:testId',
+      },
+      {
+        path: '/reject',
+        canActivate: [checkAuth],
+        component: dynamicWrapper(() => import('./pages/Test/Reject')),
+      },
+      {
+        path: '/resolve',
+        canActivate: [checkAuth, checkResolve],
+        component: dynamicWrapper(() => import('./pages/Test/Resolve')),
+      },
+    ],
+  },
+];
+
+```
+
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';

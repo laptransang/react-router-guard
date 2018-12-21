@@ -65,12 +65,30 @@ const rootElement = document.getElementById('root'); // eslint-disable-line
 ReactDOM.render(<App />, rootElement);
 ```
 ## Props
-
-| Prop                   | Type             | Description                                                                                                                                                                                                                                                          |
-| ---------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Config                  | Array[object]     | The config for render route.                                                                                                                                                                                                     |
-| loading                  | Boolean|ReactNode           | Default is true, but you can set false to hide loading or custom via ReactNode                                                                                                                                                                                                                                       |
-  
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th>default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>config</td>
+          <td>Object</td>
+          <td></td>
+          <td>The config for render route.</td>
+      </tr>
+      <tr>
+          <td>loading</td>
+          <td>Boolean|ReactNode</td>
+          <td>true</td>
+          <td>Set false to hide loading or you can pass custom loading component</td>
+      </tr>
+    </tbody>
+</table>
 
 ## License
 

@@ -15,136 +15,121 @@ yarn add react-router-guard
 ```
 
 ## Features
-* It look like react-router-config but more powerfully.
-* Support lazy loading, code splitting.
-* Support Authentication check canActivate Route Guards.
-    * If success you can pass object data from api via props routeData.
-    * If failed you can redirect to url you want.
-* Support template master config for nested children route.
-* Support loading UI component when route in lazy mode or wait api in guard.
+It is like `react-router-config` but more advanced
 
-* Support dynamic redirect with params:
-    *  ```javascript
-          {
-            path: '/redirect/:testId',
-            exact: true,
-            redirect: '/deny/:testId',
-          }
-        ```
+- Lazyloading and code splitting
+- Guard function
+- Default or customized loading UI component on unfinished routing
+- Template for nested route
+- Dynamic redirect with parameters
 
+## Important note
 
-## Notes
-- You must install react-router-dom before using it, because it use peerDependencies to reduce package-size
-
-
-## Demo
+You must install react-router-dom before using it, because it use peerDependencies to reduce package-size
 [Demo](https://codesandbox.io/s/5wr9ow6xlk)
 
 <img width="500" src="https://drive.google.com/uc?id=1ztKLqPMLzgrnYK-nSznwkls-1l4VqCYU" />
 
-## Usage
-You can check detail in folder example in github or short code bellow:
+## Overall Use
 
-The config object:
-```jsx
+As an effort to group all the routing logic into one code segment to avoid too much tracing work,
+the router will be operated based on a config array.
+
+```javascript
+
 import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth, checkResolve } from './guards';
+import { checkAuth } from "./guard";
+
+In the config file
 
 export default [
   {
-    path: '/user',
-    component: dynamicWrapper(() => import('./layouts/UserLayout')),
-    routes: [
-      {
-        path: '/user/profile',
-        component: dynamicWrapper(() => import('./pages/User/Profile')),
-        routes: [
-          {
-            path: '/user/profile/a',
-            component: dynamicWrapper(() => import('./pages/User/Detail')),
-          },
-        ],
-      },
-    ],
+    path: '/',
+    component: dynamicWrapper(() => import ('../page/homepage')),
   },
   {
+    canActivate: checkAuth,
     path: '/',
-    component: dynamicWrapper(() => import('./layouts/MainLayout')),
-    routes: [
-      {
-        path: '/',
-        exact: true,
-        component: dynamicWrapper(() => import('./pages/Home')),
-      },
-      {
-        path: '/redirect/:testId',
-        redirect: '/deny/:testId',
-      },
-      {
-        path: '/reject',
-        canActivate: [checkAuth],
-        component: dynamicWrapper(() => import('./pages/Test/Reject')),
-      },
-      {
-        path: '/resolve',
-        canActivate: [checkAuth, checkResolve],
-        component: dynamicWrapper(() => import('./pages/Test/Resolve')),
-      },
-    ],
-  },
-];
+    component: dynamicWrapper(() => import ('../page/detailpage')),
+  }
+]
 
 ```
 
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import RouterGuard from 'react-router-guard';
-import config from './config';
-// import { CustomLoading } from './components';
+app.js
 
-import './styles.css';
+``` javascript
+import {BrowserRouter} from "react-router-dom";
+import RouterGuard from 'react-router-guard';
 
 function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        {/* <RouterGuard config={config} loading={CustomLoading} /> */}
-        <RouterGuard config={config} />
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <RouterGuard config={config} />
+            </BrowserRouter>
+        </Provider>
+    )
 }
 
-const rootElement = document.getElementById('root'); // eslint-disable-line
-ReactDOM.render(<App />, rootElement);
 ```
-## Props
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th>default</th>
-        <th>description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>config</td>
-          <td>Object</td>
-          <td></td>
-          <td>The config for render route.</td>
-      </tr>
-      <tr>
-          <td>loading</td>
-          <td>Boolean|ReactNode</td>
-          <td>true</td>
-          <td>Set false to hide loading or you can pass custom loading component</td>
-      </tr>
-    </tbody>
-</table>
+
+Just like that and the router will be up and running
+
+NOTE: dynamicWrapper simply return a Loadable component. but in the future we are looking to
+adding some interesting feature, such as Redux splitting
+
+An object configurating a route consist of:
+
+
+Property | Type | Required | Default | Description|
+-|-|-|-|-|
+path |	String |	true |	-	 |Path | to | registered container|
+component |	Reactcomponent |	true |	- |	Container of the route|
+canActivate |	Array	| true	| - |	Guards of the route, decide whether it is possible to navigate|
+redirect |	String |	true |	- |Redirecting path|
+exact	|Boolean	|true	|-	|When true, the active class/style will only be applied if the location is matched exactly.|
+routes |	Array	| true |	-	 |Children routes|
+
+
+
+
+## Guard function
+
+Guard function is a promise, if the promise `resolve(true)`, current navigating pass
+the guard, if it is rejected, the error string is the redirecting path.
+
+``` javascript
+import { getItemFromStorage } from "../utils/localStorage";
+import { store } from "../store";
+
+export const checkAuth = () => new Promise((resolve, reject) => {
+    const storedUser = getItemFromStorage('user');
+    if (!storedUser) {
+        store.dispatch({
+            type: 'TURN_ON_NOTICE',
+            payload: {
+                message: 'Please sign in to access this section',
+                variant: 'error',
+            }
+        });
+        reject(new Error('/sign-in'));
+    }
+    resolve(true);
+});
+
+```
+
+## Dynamic Redirect
+
+``` javascript
+{
+  path: '/redirect/:testId',
+  exact: true,
+  redirect: '/deny/:testId',
+}
+
+```
 
 ## License
 

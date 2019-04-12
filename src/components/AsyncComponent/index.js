@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { promiseSerial, verifyRouterData, makeCancelable } from '../../utils/helpers';
-import { loadingService } from '../../services';
-import Loading from '../Loading';
+import { promiseSerial, verifyRouterData, makeCancelable } from 'utils/helpers';
+import loadingService from 'services/loadingService';
 
 class AsyncComponent extends React.Component {
   static propTypes = {
@@ -59,7 +58,7 @@ class AsyncComponent extends React.Component {
   render() {
     const { resolvedSuccess } = this.state;
     if (resolvedSuccess) {
-      return <Fragment>{this.renderChildren()}</Fragment>;
+      return this.renderChildren();
     }
 
     return React.createElement(loadingService.get());

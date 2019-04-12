@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { renderRoutes, loadingService } from './services';
+import { Router } from 'react-router-dom';
+
+import Routes from 'components/Routes';
+import history from 'history';
+import loadingService from 'services/loadingService';
 
 const propTypes = {
   config: PropTypes.arrayOf(
@@ -25,13 +29,16 @@ const defaultProps = {
   loading: true,
 };
 
-class RouterGuard extends React.Component {
-  render() {
-    const { config, loading } = this.props;
+function RouterGuard(props) {
+  const { config, loading } = props;
 
-    loadingService.set(loading);
-    return renderRoutes(config, {});
-  }
+  loadingService.set(loading);
+
+  return (
+    <Router history={history}>
+      {Routes(config)}
+    </Router>
+  );
 }
 
 RouterGuard.propTypes = propTypes;

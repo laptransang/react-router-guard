@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { RouterGuard } from 'react-router-guard';
 // import { CustomLoading } from './components';
+import 'antd/dist/antd.css';
 import config from './config';
 
 import './styles.css';

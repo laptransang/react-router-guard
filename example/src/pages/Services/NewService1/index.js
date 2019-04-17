@@ -3,14 +3,14 @@ import { Card, Breadcrumb, Layout } from 'antd';
 
 const { Content } = Layout;
 
-function Profile(props) {
-  console.log('props', props);
+function NewService1(props) {
+  console.log('NewService1', props);
   return (
     <Card>
       <Breadcrumb separator=">">
         <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="/user">User</Breadcrumb.Item>
-        <Breadcrumb.Item>Profile</Breadcrumb.Item>
+        <Breadcrumb.Item href="/services">Services</Breadcrumb.Item>
+        <Breadcrumb.Item>New service 1</Breadcrumb.Item>
       </Breadcrumb>
 
       <Content style={{ margin: '15px 0' }}>
@@ -22,4 +22,4 @@ function Profile(props) {
   );
 }
 
-export default Profile;
+export default NewService1;

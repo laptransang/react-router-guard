@@ -1,20 +1,28 @@
 import React from 'react';
-import { SideBar, Navigation } from '../components';
+import { Layout } from 'antd';
+import { SideBar } from '../components';
+
+const { Header, Content, Sider } = Layout;
 
 function MainLayout(props) {
-  const { children } = props;
+  const { children, location } = props;
 
   return (
-    <div className="MainLayout">
-      <h1>Main Layout</h1>
-      <Navigation />
-      <div className="Row">
-        <div className="LeftCol"><SideBar /></div>
-        <div className="RightCol">
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider
+        collapsible
+      >
+        <SideBar pathname={location.pathname} />
+      </Sider>
+      <Layout>
+        <Header style={{ background: '#fff', padding: '0 25px' }}>
+          <h2>Main Layout</h2>
+        </Header>
+        <Content style={{ margin: '15px' }}>
           {children}
-        </div>
-      </div>
-    </div>
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
 

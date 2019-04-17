@@ -1,20 +1,23 @@
 import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth, checkResolve } from './guards';
+import { checkAuth } from './guards';
 
 export default [
   {
     path: '/user',
     component: dynamicWrapper(() => import('./layouts/UserLayout')),
+    canActivate: [checkAuth],
     routes: [
+      {
+        path: '/user',
+        redirect: '/user/profile',
+      },
       {
         path: '/user/profile',
         component: dynamicWrapper(() => import('./pages/User/Profile')),
-        routes: [
-          {
-            path: '/user/profile/a',
-            component: dynamicWrapper(() => import('./pages/User/Detail')),
-          },
-        ],
+      },
+      {
+        path: '/user/setting',
+        component: dynamicWrapper(() => import('./pages/User/Setting')),
       },
     ],
   },
@@ -28,26 +31,16 @@ export default [
         component: dynamicWrapper(() => import('./pages/Home')),
       },
       {
-        path: '/hello',
-        component: dynamicWrapper(() => import('./pages/Test/Hello')),
+        path: '/services',
+        redirect: '/services/1',
       },
       {
-        path: '/redirect/:testId',
-        redirect: '/deny/:testId',
+        path: '/services/1',
+        component: dynamicWrapper(() => import('./pages/Services/NewService1')),
       },
       {
-        path: '/deny',
-        component: dynamicWrapper(() => import('./pages/Test/Deny')),
-      },
-      {
-        path: '/reject',
-        canActivate: [checkAuth],
-        component: dynamicWrapper(() => import('./pages/Test/Reject')),
-      },
-      {
-        path: '/resolve',
-        canActivate: [checkResolve],
-        component: dynamicWrapper(() => import('./pages/Test/Resolve')),
+        path: '/services/2',
+        component: dynamicWrapper(() => import('./pages/Services/NewService2')),
       },
     ],
   },

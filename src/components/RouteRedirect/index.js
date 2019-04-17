@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { checkReplaceUrlMatch } from '../../utils/helpers';
+import { checkReplaceUrlMatch } from 'utils/helpers';
 
 const propTypes = {
   path: PropTypes.oneOfType([
@@ -15,13 +15,12 @@ const propTypes = {
 };
 
 const defaultProps = {
-  exact: false,
+  exact: true,
   strict: false,
 };
 
 function RouteRedirect(props) {
   const { path, exact, strict, redirect } = props;
-
   return (
     <Route
       path={path}

@@ -67,5 +67,11 @@
     "history": "^4.9.0",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^4.3.1"
-  }
+  },
+  "keywords": [
+    "react router guard",
+    "react authentication route",
+    "how to implement authenticated routes",
+    "private route"
+  ]
 }

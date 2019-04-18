@@ -32,9 +32,6 @@ helps you save your time to setup a react router system.
 
 React Router Guard
 
-## Keywords
-react router guard, react authentication route, how to implement authenticated routes 
-
 ## License
 
 MIT © [laptransang](https://github.com/laptransang)

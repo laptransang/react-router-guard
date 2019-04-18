@@ -28,18 +28,19 @@ function Routes(routes, extraProps = {}, switchProps = {}) {
               exact={route.exact}
               strict={route.strict}
               canActivate={route.canActivate}
+              guardData={extraProps.guardData}
               render={(props) => {
                 const childRoutes = Routes(
                   route.routes,
-                  {} /* extraProps */,
+                  { guardData: props.guardData } /* extraProps */,
                   {
                     /* switchProps */
-                    location: props.location, // eslint-disable-line
+                    location: props.location,
                   },
                 );
                 if (route.component) {
                   return (
-                    <route.component {...props} {...extraProps} route={route}>
+                    <route.component {...props} route={route}>
                       {childRoutes}
                     </route.component>
                   );

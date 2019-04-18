@@ -38,14 +38,15 @@ class RouteGuard extends React.Component {
     );
   }
 
-  renderChildren(props) {
-    const { render, canActivate } = this.props;
+  renderChildren = (props) => {
+    const { render, canActivate, guardData } = this.props;
+    const newProps = { ...props, guardData };
 
     if (canActivate && canActivate.length > 0) {
-      return this.renderAsync(props);
+      return this.renderAsync(newProps);
     }
 
-    return render(props);
+    return render(newProps);
   }
 
   render() {
@@ -56,7 +57,7 @@ class RouteGuard extends React.Component {
         path={path}
         exact={exact}
         strict={strict}
-        render={props => this.renderChildren(props)}
+        render={this.renderChildren}
       />
     );
   }

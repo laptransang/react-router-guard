@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import { promiseSerial, verifyRouterData, makeCancelable } from 'utils/helpers';
 import loadingService from 'services/loadingService';
 
-class AsyncComponent extends React.Component {
-  static propTypes = {
-    promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
-    children: PropTypes.node.isRequired,
-    history: PropTypes.object.isRequired, // eslint-disable-line
-  };
+const propTypes = {
+  promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+  children: PropTypes.node.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  guardData: PropTypes.objectOf(PropTypes.any),
+};
 
+const defaultProps = {
+  guardData: {},
+};
+
+class AsyncComponent extends React.Component {
   constructor(props) {
     super(props);
     this.chains = null;
@@ -48,10 +53,11 @@ class AsyncComponent extends React.Component {
   }
 
   renderChildren() {
-    const { children } = this.props;
+    const { children, guardData } = this.props;
     const { data } = this.state;
+
     return React.Children.map(children, child => (
-      React.cloneElement(child, { routeData: data })
+      React.cloneElement(child, { guardData: { ...guardData, ...data } })
     ));
   }
 
@@ -64,5 +70,8 @@ class AsyncComponent extends React.Component {
     return React.createElement(loadingService.get());
   }
 }
+
+AsyncComponent.propTypes = propTypes;
+AsyncComponent.defaultProps = defaultProps;
 
 export default AsyncComponent;

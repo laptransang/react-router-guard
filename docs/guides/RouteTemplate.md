@@ -34,4 +34,27 @@ export default [
     ],
   },
 ];
+
+// props children is the sub route so you can put it where you want in your template
+function MainLayout(props) {
+  const { children, location } = props;
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider
+        collapsible
+      >
+        <SideBar pathname={location.pathname} />
+      </Sider>
+      <Layout>
+        <Header style={{ background: '#fff', padding: '0 25px' }}>
+          <h2>Main Layout</h2>
+        </Header>
+        <Content style={{ margin: '15px' }}>
+          {children}
+        </Content>
+      </Layout>
+    </Layout>
+  );
+}
 ```

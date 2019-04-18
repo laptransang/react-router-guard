@@ -1,2 +1,2 @@
-export { default as checkAuth } from "./checkAuth";
-export { default as checkResolve } from "./checkResolve";
+export { default as checkAuth } from './checkAuth';
+export { default as checkResolve } from './checkResolve';

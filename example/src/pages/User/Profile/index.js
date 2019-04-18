@@ -3,8 +3,7 @@ import { Card, Breadcrumb, Layout } from 'antd';
 
 const { Content } = Layout;
 
-function Profile(props) {
-  console.log('props', props);
+function Profile() {
   return (
     <Card>
       <Breadcrumb separator=">">

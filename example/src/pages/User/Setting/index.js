@@ -3,9 +3,7 @@ import { Card, Breadcrumb, Layout } from 'antd';
 
 const { Content } = Layout;
 
-function Setting(props) {
-  console.log('props', props);
-
+function Setting() {
   return (
     <Card>
       <Breadcrumb separator=">">

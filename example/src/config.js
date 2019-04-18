@@ -1,5 +1,5 @@
 import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth } from './guards';
+import { checkAuth, checkResolve } from './guards';
 
 export default [
   {
@@ -13,6 +13,7 @@ export default [
       },
       {
         path: '/user/profile',
+        canActivate: [checkResolve],
         component: dynamicWrapper(() => import('./pages/User/Profile')),
       },
       {

@@ -1,6 +1,15 @@
 # Route Configuration
 This is the example object config for react-router-guard
 
+| Property | Type | Required  | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| path  | String  | true  |  |
+| component  | Reactcomponent  | true  |   |
+| canActivate  | Array[func]  | false  |   |
+| redirect  | String  | false  |   |
+| exact  | Boolean  | false  | false  |
+| routes  | Array[Object]  | false  |   |
+
 ```jsx
 import { dynamicWrapper } from 'react-router-guard';
 import { checkAuth, checkResolve } from './guards';

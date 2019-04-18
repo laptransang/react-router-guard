@@ -19,13 +19,13 @@ $ yarn add react-router-guard
 Change your import from react-router-dom 
 
 ```jsx
-import {  BrowserRouter, Route, withRoute, Switch, Redirect, Link, NavLink } from  'react-router-dom';
-```
+import { BrowserRouter, Route, withRoute, Switch, Redirect, Link, NavLink } from 'react-router-dom';
+``` from  
 
 to react-router-guard
 
 ```jsx
-import {  BrowserRouter, Route, withRoute, Switch, Redirect, Link, NavLink } from  'react-router-guard';
+import { BrowserRouter, Route, withRoute, Switch, Redirect, Link, NavLink } from 'react-router-guard';
 ```
 
 Remove BrowserRouter from your index file, now the syntax is
@@ -40,3 +40,5 @@ function App() {
     )
 }
 ```
+
+Replace all props routeData to guardData 

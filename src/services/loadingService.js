@@ -1,4 +1,5 @@
-import { Loading, NoLoading } from '../components';
+import Loading from 'components/Loading';
+import NoLoading from 'components/NoLoading';
 
 function loadingService() {
   let loading = null;

@@ -3,13 +3,13 @@ import { Card, Breadcrumb, Layout } from 'antd';
 
 const { Content } = Layout;
 
-function Profile() {
+function Setting() {
   return (
     <Card>
       <Breadcrumb separator=">">
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/user">User</Breadcrumb.Item>
-        <Breadcrumb.Item>Profile</Breadcrumb.Item>
+        <Breadcrumb.Item>Setting</Breadcrumb.Item>
       </Breadcrumb>
 
       <Content style={{ margin: '15px 0' }}>
@@ -21,4 +21,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Setting;

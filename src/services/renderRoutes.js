@@ -1,48 +1,39 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'; // eslint-disable-line
-import withRoutes from './withRoutes';
-import { checkReplaceUrlMatch } from '../utils/helpers';
+import { Switch } from 'react-router-dom';
 
-export default function renderRoutes(routes, extraProps = {}, switchProps = {}) {
+import RouteGuard from 'components/RouteGuard';
+import RouteRedirect from 'components/RouteRedirect';
+
+function renderRoutes(routes, extraProps = {}, switchProps = {}) {
   return routes ? (
     <Switch {...switchProps}>
       {routes.map((route, i) => {
         if (route.redirect) {
           return (
-            <Route
-              path={route.path}
+            <RouteRedirect
               key={route.key || i}
+              path={route.path}
               exact={route.exact}
               strict={route.strict}
-              render={props => (
-                <Redirect
-                  key={route.key || i}
-                  from={route.path}
-                  to={{
-                    ...props.location,
-                    pathname: checkReplaceUrlMatch(route.redirect, props.match),
-                  }}
-                  exact={route.exact}
-                  strict={route.strict}
-                />
-              )}
+              redirect={route.redirect}
             />
           );
         }
-        const NestedRoute = route.canActivate ? withRoutes(route) : Route;
+
         return (
-          <NestedRoute
+          <RouteGuard
             key={route.key || i}
             path={route.path}
             exact={route.exact}
             strict={route.strict}
+            canActivate={route.canActivate}
             render={(props) => {
               const childRoutes = renderRoutes(
                 route.routes,
                 {} /* extraProps */,
                 {
                   /* switchProps */
-                  location: props.location,
+                  location: props.location, // eslint-disable-line
                 },
               );
               if (route.component) {
@@ -61,3 +52,5 @@ export default function renderRoutes(routes, extraProps = {}, switchProps = {}) 
     </Switch>
   ) : null;
 }
+
+export default renderRoutes;

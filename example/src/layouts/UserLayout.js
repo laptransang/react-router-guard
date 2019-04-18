@@ -1,15 +1,28 @@
 import React from 'react';
+import { Layout } from 'antd';
+import { SideBar } from '../components';
+
+const { Header, Content, Sider } = Layout;
 
 function UserLayout(props) {
-  const { children } = props;
+  const { children, location } = props;
 
   return (
-    <div className="MainLayout">
-      <h1>User Layout</h1>
-      <div>
-        {children}
-      </div>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider
+        collapsible
+      >
+        <SideBar pathname={location.pathname} />
+      </Sider>
+      <Layout>
+        <Header style={{ background: '#fff', padding: '0 25px' }}>
+          <h2>User Layout</h2>
+        </Header>
+        <Content style={{ margin: '15px' }}>
+          {children}
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
 

@@ -1,10 +1,21 @@
 import React from 'react';
+import { Card, Breadcrumb, Layout } from 'antd';
+
+import AntDesignPro from './img/ant-design-pro.jpg';
+
+const { Content } = Layout;
 
 function Home() {
   return (
-    <div className="Page">
-      <h3>Home Page</h3>
-    </div>
+    <Card>
+      <Breadcrumb separator=">">
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Content style={{ margin: '15px 0' }}>
+        <img src={AntDesignPro} alt="" style={{ width: '100%' }} />
+      </Content>
+    </Card>
   );
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-router-guard",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "React router guard",
   "author": "laptransang",
   "license": "MIT",
@@ -22,15 +22,16 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
-    "react-router-dom": "^4.3.1"
+    "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -39,8 +40,10 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
+    "eslint-import-resolver-babel-module": "^5.0.1",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-module-resolver": "^0.8.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.10.0",
@@ -61,7 +64,8 @@
     "dist"
   ],
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "react-loadable": "^5.5.0"
+    "history": "^4.9.0",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^4.3.1"
   }
 }

@@ -1,19 +1,15 @@
-import { dynamicWrapper } from 'react-router-guard';
-import { checkAuth, checkResolve } from './guards';
+# Route Template
+You can group template by feature for example you have UserLayout and MainLayout, in MainLayout you have sidebar and header is using for all sub route and in UserLayout you don't have sidebar and header, react-router-guard can solve it for you, this is example for this case
 
+```jsx
 export default [
   {
     path: '/user',
-    component: dynamicWrapper(() => import('./layouts/UserLayout')),
+    component: dynamicWrapper(() => import('./layouts/UserLayout')), // file location on your project
     canActivate: [checkAuth],
     routes: [
       {
-        path: '/user',
-        redirect: '/user/profile',
-      },
-      {
         path: '/user/profile',
-        canActivate: [checkResolve],
         component: dynamicWrapper(() => import('./pages/User/Profile')),
       },
       {
@@ -33,16 +29,9 @@ export default [
       },
       {
         path: '/services',
-        redirect: '/services/1',
-      },
-      {
-        path: '/services/1',
-        component: dynamicWrapper(() => import('./pages/Services/NewService1')),
-      },
-      {
-        path: '/services/2',
-        component: dynamicWrapper(() => import('./pages/Services/NewService2')),
+        component: dynamicWrapper(() => import('./pages/Services')),
       },
     ],
   },
 ];
+```

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
-import RouteGuard from 'components/RouteGuard';
-import RouteRedirect from 'components/RouteRedirect';
+import RouteGuard from 'components/RouteGuard/index';
+import RouteRedirect from 'components/RouteRedirect/index';
 
 function Routes(routes, extraProps = {}, switchProps = {}) {
   if (routes) {

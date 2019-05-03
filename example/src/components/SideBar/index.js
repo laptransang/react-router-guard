@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-guard';
+import { Link, NavLink } from 'react-router-guard';
 
 const { SubMenu } = Menu;
 
@@ -16,9 +16,9 @@ function SideBar(props) {
     >
       <Menu.Item key="/">
         <Icon type="home" />
-        <Link to="/" style={{ display: 'inline-block' }}>
+        <NavLink to="/" style={{ display: 'inline-block' }}>
           Home
-        </Link>
+        </NavLink>
       </Menu.Item>
 
       <SubMenu

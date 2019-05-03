@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Router } from 'react-router-dom';
 
-import Routes from 'components/Routes';
-import history from 'history';
-import loadingService from 'services/loadingService';
+import { routes, history, loadingService } from 'services';
 
 const propTypes = {
   config: PropTypes.arrayOf(
@@ -36,7 +34,7 @@ function RouterGuard(props) {
 
   return (
     <Router history={history}>
-      {Routes(config)}
+      {routes(config)}
     </Router>
   );
 }

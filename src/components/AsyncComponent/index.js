@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { promiseSerial, verifyRouterData, makeCancelable } from 'utils/helpers';
-import { loadingService } from 'services';
+import loadingService from 'services/loadingService';
 
 const propTypes = {
   promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,

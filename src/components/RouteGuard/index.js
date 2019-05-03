@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import AsyncComponent from '../AsyncComponent';
+import AsyncComponent from 'components/AsyncComponent';
 
 const propTypes = {
   path: PropTypes.oneOfType([

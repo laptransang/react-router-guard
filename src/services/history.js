@@ -1,3 +1,13 @@
 import { createBrowserHistory } from 'history';
 
-export default createBrowserHistory();
+function browserHistory() {
+  let history;
+
+  if (typeof document !== 'undefined') {
+    history = createBrowserHistory();
+  }
+
+  return history;
+}
+
+export default browserHistory();

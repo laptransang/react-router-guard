@@ -1,7 +1,7 @@
 {
   "name": "react-router-guard",
-  "version": "2.0.1",
-  "description": "React router guard",
+  "version": "2.0.2",
+  "description": "React Router Guard",
   "author": "laptransang",
   "license": "MIT",
   "repository": "laptransang/react-router-guard",
@@ -69,8 +69,11 @@
     "react-router-dom": "^4.3.1"
   },
   "keywords": [
-    "react router guard",
+    "react",
+    "router",
+    "guard",
     "react authentication router",
+    "react router auth",
     "react router code splitting"
   ]
 }

@@ -8,7 +8,7 @@ const propTypes = {
   config: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,
-      component: PropTypes.func.isRequired,
+      component: PropTypes.func,
       redirect: PropTypes.string,
       exact: PropTypes.bool,
       canActivate: PropTypes.oneOfType([

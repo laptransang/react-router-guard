@@ -16,8 +16,8 @@ yarn add react-router-guard
 ```
 
 ## Introduction
-React Router Guard is a fully solution for react router system, that provide object config route, code splitting and authentication route for you, 
-helps you save your time to setup a react router system.
+React Router Guard is a fully solution for react router system, that provide react router config, route-based code splitting and authentication router for you, 
+react-router-guard helps you save a lot of time to setup a react router system, for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
 
 ## Docs
 [Migrating from 1.x to 2.x](/docs/guides/Migrating.md)

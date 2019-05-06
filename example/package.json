@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "antd": "^3.16.2",
-    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^5.0.0",

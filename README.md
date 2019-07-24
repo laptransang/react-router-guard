@@ -34,5 +34,5 @@ React Router Guard
 
 ## License
 
-MIT © [laptransang](https://github.com/laptransang)
+MIT © [TSL](https://github.com/tsl)
 =======

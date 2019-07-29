@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Router } from 'react-router-dom';
+import { Router, HashRouter } from 'react-router-dom';
 
 import { routes, history, loadingService } from 'services';
 
@@ -21,22 +21,20 @@ const propTypes = {
     PropTypes.bool,
     PropTypes.func,
   ]),
+  hashMode: PropTypes.bool,
 };
 
 const defaultProps = {
   loading: true,
+  hashMode: false,
 };
 
 function RouterGuard(props) {
-  const { config, loading } = props;
+  const { config, loading, hashMode } = props;
 
   loadingService.set(loading);
 
-  return (
-    <Router history={history}>
-      {routes(config)}
-    </Router>
-  );
+  return hashMode ? (<HashRouter>{routes(config)}</HashRouter>) : (<Router history={history}>{routes(config)}</Router>);
 }
 
 RouterGuard.propTypes = propTypes;

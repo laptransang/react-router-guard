@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       {/* <RouterGuard config={config} loading={CustomLoading} /> */}
-      <RouterGuard config={config} />
+      <RouterGuard config={config} hashMode={false} />
     </div>
   );
 }

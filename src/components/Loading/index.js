@@ -1,8 +1,11 @@
 import React from 'react';
-import ImageLoading from '../../assets/img/loading.svg';
+import NoLoading from 'components/NoLoading';
+import ImageLoading from 'assets/img/loading.svg';
 
-function Loading() {
-  return (
+import DataContext from 'context/DataContext';
+
+class Loading extends React.Component {
+  renderLoading = () => (
     <div
       className="react-router-guard-loading"
       style={{
@@ -19,6 +22,22 @@ function Loading() {
       <img style={{ width: '50px' }} src={ImageLoading} alt="" />
     </div>
   );
+
+  render() {
+    const { loading } = this.context;
+
+    if (!loading) {
+      return (<NoLoading />);
+    }
+
+    if (loading === true) {
+      return this.renderLoading();
+    }
+
+    return loading;
+  }
 }
+
+Loading.contextType = DataContext;
 
 export default Loading;

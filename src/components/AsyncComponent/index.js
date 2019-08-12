@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Loading from 'components/Loading';
+
 import { promiseSerial, verifyRouterData, makeCancelable } from 'utils/helpers';
-import loadingService from 'services/loadingService';
 
 const propTypes = {
   promise: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
@@ -68,7 +69,7 @@ class AsyncComponent extends React.Component {
       return this.renderChildren();
     }
 
-    return React.createElement(loadingService.get());
+    return (<Loading />);
   }
 }
 

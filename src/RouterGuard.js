@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Router } from 'react-router-dom';
+import DataContext from 'context/DataContext';
 
-import { routes, history, loadingService } from 'services';
+import { routes, browserHistory } from 'services';
 
 const propTypes = {
   config: PropTypes.arrayOf(
@@ -21,20 +22,23 @@ const propTypes = {
     PropTypes.bool,
     PropTypes.func,
   ]),
+  hashMode: PropTypes.bool,
 };
 
 const defaultProps = {
   loading: true,
+  hashMode: false,
 };
 
 function RouterGuard(props) {
-  const { config, loading } = props;
-
-  loadingService.set(loading);
+  const { config, loading, hashMode } = props;
+  const history = browserHistory(hashMode);
 
   return (
     <Router history={history}>
-      {routes(config)}
+      <DataContext.Provider value={{ loading }}>
+        {routes(config)}
+      </DataContext.Provider>
     </Router>
   );
 }

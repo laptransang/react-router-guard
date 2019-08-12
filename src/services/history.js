@@ -1,13 +1,7 @@
-import { createBrowserHistory } from 'history';
+import { createHashHistory, createBrowserHistory } from 'history';
 
-function browserHistory() {
-  let history;
-
-  if (typeof document !== 'undefined') {
-    history = createBrowserHistory();
-  }
-
-  return history;
+function browserHistory(hashMode) {
+  return hashMode ? createHashHistory() : createBrowserHistory();
 }
 
-export default browserHistory();
+export default browserHistory;

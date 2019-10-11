@@ -1,5 +1,5 @@
 # Route History
-If you want redirect to url using history.push you can use history export by react-router-guard
+Using history in case, you want to redirect automatic in function code like redux or mobx
 
 ### Navigation
 
@@ -15,6 +15,18 @@ If you want redirect to url using history.push you can use history export by rea
 ```jsx
 // if case you want use history.push in redux-saga or mobx you can use import like this, default history props is exist in sub route
 import { history } from 'react-router-guard';
+import config from './config';
 
 history.push('/'); 
+
+// But incase you want to using hash history you must pass history to RouterGuard as props
+import { RouterGuard, createHashHistory } from 'react-router-guard';
+
+function App() {
+    const history = createHashHistory();
+
+    return (
+        <RouterGuard config={config} history={history} />
+    );
+}    
 ```

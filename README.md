@@ -16,8 +16,8 @@ yarn add react-router-guard
 ```
 
 ## Introduction
-React Router Guard is a fully solution for react router system, that provide react router config, route-based code splitting and authentication router for you with simple syntax used, 
-react-router-guard helps you save a lot of time to setup a react router system, for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
+React Router Guard is a fully solution for react router system it include react-router-dom and support structure for you, the main feature includes (react router config as object, route-based code splitting and authentication router, router loading animation), use can using it by the easy way 
+react-router-guard will be helps you save a lot of time to setup a react router system, for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
 
 ## Usage
 ```javascript
@@ -29,7 +29,7 @@ import config from './config';
 function App() {
   return (
     <div className="App">
-      <RouterGuard config={config} loading hashMode={false}  />
+      <RouterGuard config={config} />
     </div>
   );
 }
@@ -62,10 +62,10 @@ ReactDOM.render(<App />, rootElement);
           <td>The loading config for router</td>
       </tr>
       <tr>
-          <td>hashMode</td>
-          <td>Boolean</td>
-          <td>false</td>
-          <td>The hashMode config for switch between hash /#/ and no hash /</td>
+          <td>history</td>
+          <td>createHashHistory()</td>
+          <td>null</td>
+          <td>Default router guard using createBrowserHistory you can change to hashHistory by pass history as props</td>
       </tr>
     </tbody>
 </table>

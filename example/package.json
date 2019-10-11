@@ -1,11 +1,12 @@
 {
   "name": "react-router-guard-example",
-  "homepage": "https://laptransang.github.io/react-router-guard",
+  "homepage": "https://codesandbox.io/s/5wr9ow6xlk",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "antd": "^3.16.2",
+    "history": "^4.10.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^5.0.0",

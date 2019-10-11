@@ -22,20 +22,19 @@ const propTypes = {
     PropTypes.bool,
     PropTypes.func,
   ]),
-  hashMode: PropTypes.bool,
+  history: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 const defaultProps = {
   loading: true,
-  hashMode: false,
+  history: null,
 };
 
 function RouterGuard(props) {
-  const { config, loading, hashMode } = props;
-  const history = browserHistory(hashMode);
+  const { config, loading, history } = props;
 
   return (
-    <Router history={history}>
+    <Router history={history || browserHistory}>
       <DataContext.Provider value={{ loading }}>
         {routes(config)}
       </DataContext.Provider>

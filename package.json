@@ -1,10 +1,10 @@
 {
   "name": "react-router-guard",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "React Router Guard",
   "author": "laptransang",
   "license": "MIT",
-  "repository": "laptransang/react-router-guard",
+  "repository": "tsl/react-router-guard",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -74,6 +74,7 @@
     "guard",
     "react authentication router",
     "react router auth",
-    "react router code splitting"
+    "react router code splitting",
+    "react router lazy"
   ]
 }

@@ -1,8 +1,10 @@
 import React from 'react';
-import NoLoading from 'components/NoLoading';
-import ImageLoading from 'assets/img/loading.svg';
 
-import DataContext from 'context/DataContext';
+import NoLoading from '@/components/NoLoading';
+import DataContext from '@/context/DataContext';
+
+import imageLoading from './img/loading.svg';
+// const imageLoading = require('./img/loading.svg');
 
 class Loading extends React.Component {
   renderLoading = () => (
@@ -19,7 +21,7 @@ class Loading extends React.Component {
         justifyContent: 'center',
       }}
     >
-      <img style={{ width: '50px' }} src={ImageLoading} alt="" />
+      <img style={{ width: '50px' }} src={imageLoading} alt="" />
     </div>
   );
 

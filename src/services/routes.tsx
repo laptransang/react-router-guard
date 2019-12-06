@@ -1,12 +1,15 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
-import RouteGuard from 'components/RouteGuard';
-import RouteRedirect from 'components/RouteRedirect';
+import RouteGuard from '@/components/RouteGuard';
+import RouteRedirect from '@/components/RouteRedirect';
 
-function Routes(routes, extraProps = {}, switchProps = {}) {
+function Routes(routes, extraProps = {
+  guardData: Object
+}, switchProps = {}) {
   if (routes) {
     return (
+      // eslint-disable-next-line react/jsx-props-no-spreading
       <Switch {...switchProps}>
         {routes.map((route, i) => {
           if (route.redirect) {
@@ -40,6 +43,7 @@ function Routes(routes, extraProps = {}, switchProps = {}) {
                 );
                 if (route.component) {
                   return (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <route.component {...props} route={route}>
                       {childRoutes}
                     </route.component>

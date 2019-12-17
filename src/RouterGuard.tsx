@@ -1,9 +1,10 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import DataContext from '@/context/DataContext';
 
-import { routes, browserHistory } from '@/services';
 import { IConfig } from '@/models';
+import Routes from '@/components/Routes';
+import browserHistory from '@/utils/browserHistory';
+import DataContext from '@/context/DataContext';
 
 const defaultProps = {
   loading: true,
@@ -24,7 +25,7 @@ function RouterGuard(props: Props) {
       history={history || browserHistory}
     >
       <DataContext.Provider value={{ loading }}>
-        {routes(config)}
+        {Routes(config)}
       </DataContext.Provider>
     </Router>
   );

@@ -1,11 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "airbnb",
-    "eslint-config-airbnb-typescript",
-    "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint"
+
   ],
   "env": {
     "es6": true

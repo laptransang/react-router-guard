@@ -24,8 +24,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"],
-  "files": [
-    "typings.d.ts"
-  ]
+  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
 }

@@ -4,7 +4,6 @@ import NoLoading from '@/components/NoLoading';
 import DataContext from '@/context/DataContext';
 
 import imageLoading from './img/loading.svg';
-// const imageLoading = require('./img/loading.svg');
 
 class Loading extends React.Component {
   renderLoading = () => (

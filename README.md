@@ -16,13 +16,16 @@ yarn add react-router-guard
 ```
 
 ## Introduction
-React Router Guard is a fully solution for react router system it include react-router-dom and support structure for you, the main feature includes (react router config as object, route-based code splitting and authentication router, router loading animation), use can using it by the easy way 
-react-router-guard will be helps you save a lot of time to setup a react router system, for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
+React Router Guard is a router structure base on react-router-dom, when you install react-router-guard you don't need to install react-router-dom because it use react-router-dom as dependencies, it give you config object and an overview for all router of your app, besides it also has code splitting and router authentication support and dynamic redirect for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
 
 ## Usage
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
+/*
+Because we don't need to install react-router-dom so you can use Link or NavLink from 'react-router-guard'
+import { RouterGuard, BrowserRouter, Link, NavLink, Redirect, Route, Router, Switch, history, withRouter } from 'react-router-guard';
+*/
 import { RouterGuard } from 'react-router-guard';
 import config from './config';
 
@@ -44,28 +47,19 @@ ReactDOM.render(<App />, rootElement);
     <tr>
         <th style="width: 100px;">name</th>
         <th style="width: 50px;">type</th>
-        <th>default</th>
         <th>description</th>
     </tr>
     </thead>
     <tbody>
       <tr>
-          <td>Config</td>
-          <td>Array[Object]</td>
-          <td></td>
+          <td>config</td>
+          <td>RouterGuardConfigProps[]</td>
           <td>The config for render all route</td>
       </tr>
       <tr>
-          <td>loading</td>
-          <td>Boolean|React.Element</td>
-          <td>true</td>
-          <td>The loading config for router</td>
-      </tr>
-      <tr>
           <td>history</td>
-          <td>createHashHistory()</td>
-          <td>null</td>
-          <td>Default router guard using createBrowserHistory you can change to hashHistory by pass history as props</td>
+          <td>createBrowserHistory()</td>
+          <td>To use custom history</td>
       </tr>
     </tbody>
 </table>

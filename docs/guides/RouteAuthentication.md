@@ -11,13 +11,13 @@ export default function checkAuth() {
         // If success you can pass data to all sub route, the sub route component can access it via props guardData
         resolve(user);
     } else {
-        // If failure you can redirect url you want. 
+        // If failure you can redirect url you want.
         reject(new Error('/login));
     }
   });
 }
 
-// Object config
+// Example using check authentication
 export default [
   {
     path: '/user',

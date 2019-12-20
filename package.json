@@ -4,7 +4,7 @@
   "description": "React Router Guard",
   "author": "laptransang",
   "license": "MIT",
-  "repository": "tsl/react-router-guard",
+  "repository": "laptransang/react-router-guard",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

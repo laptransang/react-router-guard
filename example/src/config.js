@@ -1,10 +1,10 @@
-import { dynamicWrapper } from 'react-router-guard';
+import { lazy } from 'react-router-guard';
 import { checkAuth, checkResolve } from './guards';
 
 export default [
   {
     path: '/user',
-    component: dynamicWrapper(() => import('./layouts/UserLayout')),
+    component: lazy(() => import('./layouts/UserLayout')),
     canActivate: [checkAuth],
     routes: [
       {
@@ -14,22 +14,22 @@ export default [
       {
         path: '/user/profile',
         canActivate: [checkResolve],
-        component: dynamicWrapper(() => import('./pages/User/Profile')),
+        component: lazy(() => import('./pages/User/Profile')),
       },
       {
         path: '/user/setting',
-        component: dynamicWrapper(() => import('./pages/User/Setting')),
+        component: lazy(() => import('./pages/User/Setting')),
       },
     ],
   },
   {
     path: '/',
-    component: dynamicWrapper(() => import('./layouts/MainLayout')),
+    component: lazy(() => import('./layouts/MainLayout')),
     routes: [
       {
         path: '/',
         exact: true,
-        component: dynamicWrapper(() => import('./pages/Home')),
+        component: lazy(() => import('./pages/Home')),
       },
       {
         path: '/services',
@@ -37,11 +37,11 @@ export default [
       },
       {
         path: '/services/1',
-        component: dynamicWrapper(() => import('./pages/Services/NewService1')),
+        component: lazy(() => import('./pages/Services/NewService1')),
       },
       {
         path: '/services/2',
-        component: dynamicWrapper(() => import('./pages/Services/NewService2')),
+        component: lazy(() => import('./pages/Services/NewService2')),
       },
     ],
   },

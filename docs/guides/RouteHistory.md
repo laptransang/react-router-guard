@@ -17,16 +17,6 @@ Using history in case, you want to redirect automatic in function code like redu
 import { history } from 'react-router-guard';
 import config from './config';
 
-history.push('/'); 
+history.push('/');
 
-// But incase you want to using hash history you must pass history to RouterGuard as props
-import { RouterGuard, createHashHistory } from 'react-router-guard';
-
-function App() {
-    const history = createHashHistory();
-
-    return (
-        <RouterGuard config={config} history={history} />
-    );
-}    
 ```

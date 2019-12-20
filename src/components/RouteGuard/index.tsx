@@ -1,39 +1,43 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-import AsyncComponent from 'components/AsyncComponent';
+import AsyncComponent from '@/components/AsyncComponent';
 
-const propTypes = {
-  path: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]).isRequired,
-  render: PropTypes.func.isRequired,
-  canActivate: PropTypes.arrayOf(PropTypes.func),
-  exact: PropTypes.bool,
-  strict: PropTypes.bool,
+export type Props = {
+  path: string;
+  render: (props) => void;
+  canActivate?: Array<Promise<Function>>;
+  exact?: boolean;
+  strict?: boolean;
+  guardData: object;
 };
 
-const defaultProps = {
-  canActivate: [],
-  exact: false,
-  strict: false,
-};
-
-const Component = (args) => {
+function Component(args: Props) {
   const { render, ...props } = args;
 
-  return render(props);
-};
+  return (
+    <>
+      {render(props)}
+    </>
+  );
+}
 
-class RouteGuard extends React.Component {
+class RouteGuard extends React.Component<Props> {
+  static defaultProps: {
+    canActivate: [],
+    exact: false;
+    strict: false,
+  };
+
   renderAsync(props) {
     const { render, canActivate } = this.props;
 
     return (
       <AsyncComponent {...props} promise={canActivate}>
-        <Component {...props} render={render} />
+        <Component
+          {...props}
+          render={render}
+        />
       </AsyncComponent>
     );
   }
@@ -46,8 +50,12 @@ class RouteGuard extends React.Component {
       return this.renderAsync(newProps);
     }
 
-    return render(newProps);
-  }
+    return (
+      <>
+        {render(newProps)}
+      </>
+    );
+  };
 
   render() {
     const { path, exact, strict } = this.props;
@@ -62,8 +70,5 @@ class RouteGuard extends React.Component {
     );
   }
 }
-
-RouteGuard.propTypes = propTypes;
-RouteGuard.defaultProps = defaultProps;
 
 export default RouteGuard;

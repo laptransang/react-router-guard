@@ -36,6 +36,7 @@ export default [
 ];
 
 // props children is the sub route so you can put it where you want in your template
+// props.children will contain sub route
 function MainLayout(props) {
   const { children, location } = props;
 

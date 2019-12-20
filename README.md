@@ -16,7 +16,7 @@ yarn add react-router-guard
 ```
 
 ## Introduction
-React Router Guard is a router structure base on react-router-dom, when you install react-router-guard you don't need to install (react-router-dom, history, react-loadable) because it use these packages as dependencies, it give you config object and an overview for all router url of your app, besides it also has code splitting and router authentication support and dynamic redirect for more information please read [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
+React Router Guard is a router structure base on react-router-dom, when you install react-router-guard you don't need to install (react-router-dom, history, react-loadable) because it uses these packages as dependencies, it gives you some cool feature like router-config, code splitting, router authentication support, dynamic redirect for more information please read the [demo](https://codesandbox.io/s/5wr9ow6xlk) and [docs](/docs/guides/Content.md)
 
 ## Usage
 ```javascript

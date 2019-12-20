@@ -1,0 +1,8 @@
+{
+  "short_name": "react-router-guard",
+  "name": "react-router-guard",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

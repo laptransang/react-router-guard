@@ -75,9 +75,9 @@
     "dist"
   ],
   "dependencies": {
-    "history": "4.7.2",
+    "history": "4.10.1",
     "react-loadable": "^5.5.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^5.1.2"
   },
   "keywords": [
     "react",
